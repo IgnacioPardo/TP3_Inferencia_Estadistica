@@ -1,0 +1,42 @@
+---
+title: "Trabajo Practico 3"
+author: "Ignacio Pardo & Luca Mazzarello"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+1.  Implementar una función `ic_sigma_con` que tenga por argumentos un conjunto de datos, una varianza poblacional y un nivel, y devuelva el `IC` para $\mu$ basado en la distribución normal con varianza conocida.
+
+```{r}
+
+ic_sigma_con <- function(datos, var, nivel){
+  media <- mean(datos)
+  alfa = 1-nivel
+  q <- qnorm(1-alfa/2)
+  n <- length(datos)
+  se <- sqrt(var/n)
+  a <- media - q * se
+  b <- media + q * se
+  c(a, b)
+}
+```
+
+2.  Guardar en el vector datos normales, 5 datos generados con distribución $\operatorname{N}(\mu, \sigma^2)$ con $\mu = 60$ y $\sigma^2 = 25$ y utilizar la función `ic_sigma_con`para calcular un `IC` para $\mu$ de nivel 0,95. Utilizar la semilla 23 para generar los datos, para eso ejecute el comando set.seed(23) antes de generarlos.
+    a.  ¿Pertenece 60 al IC?
+
+    b.  ¿Ocurrirá siempre lo que observa en este caso
+
+```{r}
+
+set.seed(23)
+
+datos_norm <- rnorm(5, 60, 5)
+ic <- ic_sigma_con(datos_norm, 25, 0.95)
+ic
+ic[1] < 60 && ic[2] > 60
+```
+
+3.  Mediante una simulación de Nrep = 10000 muestras normales con media 60, varianza 25 y tamaño n = 5, calcule el nivel de cubrimiento empírico del IC implementado en el ítem 1 .
+    a.  ¿A qué valor debería aproximarse ese nivel de cubrimiento empírico? ¿por qué?
+
+    b.  ¿Efectivamente se acerca a ese valor?
