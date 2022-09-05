@@ -2,7 +2,7 @@
 title: "Trabajo Practico 3"
 author: "Ignacio Pardo & Luca Mazzarello"
 date: "`r Sys.Date()`"
-output: html_document
+output: pdf_document
 ---
 
 1.  Implementar una función `ic_sigma_con` que tenga por argumentos un conjunto de datos, una varianza poblacional y un nivel, y devuelva el `IC` para $\mu$ basado en la distribución normal con varianza conocida.
