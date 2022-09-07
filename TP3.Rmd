@@ -39,7 +39,7 @@ ic[1] < 60 && ic[2] > 60
 El IC contiene al valor 60. Como vimos en clase, el 95% de las veces debería contener al valor 60, es decir, no siempre ocurre lo que se observa en este caso. Sin embargo, al hacer `set.seed(23)` , siempre que corramos la celda anterior vamos a obtener el mismo resultado.
 
 3.  Mediante una simulación de Nrep = 10000 muestras normales con media 60, varianza 25 y tamaño n = 5, calcule el nivel de cubrimiento empírico del IC implementado en el ítem 1 .
-    a.  ¿A qué valor debería aproximarse ese nivel de cubrimiento empírico? ¿por qué?
+    a.  ¿A qué valor debería aproximarse ese nivel descubrimiento empírico? ¿por qué?
 
     b.  ¿Efectivamente se acerca a ese valor?
 
@@ -55,4 +55,4 @@ ic_correctos = replicate(Nrep,{
 mean(ic_correctos)
 ```
 
-El valor obtenido se debería aproximar al nivel del IC y efectivamente lo hace. Esto se debe a que al trabajar con un $IC = ( a(X_1, … , X_n), b(X_1, … , X_n) ) = 0,95$, al tomar muchos ejemplos/muestras de $IC_{obs}$, el 0,95 porciento de las veces, $\mu_0=60$ ($\mu_0$ porque es conocida) va a estar dentro de los intervalos que tome la variable $ic_{correctos}$
+El valor obtenido se debería aproximar al nivel del IC y efectivamente lo hace. Esto se debe a que al trabajar con un $IC = ( a(X_1, … , X_n), b(X_1, … , X_n) ) = 0,95$, al tomar muestras, el $95\%$ de los $IC_{obs}$ van a contener a $\mu_0=60$.
